@@ -20,7 +20,7 @@ namespace ApiCrossCutting.DependencyInjection
             serviceCollection.AddScoped<IUserRepository, UserImplementation>();
 
             serviceCollection.AddDbContext<MyContext>(
-               options => options.UseMySql("server=localhost;userid=root;port=3306;password=78#P9865@;database=CursoApi")
+               options => options.UseMySql(" senha do Banco de Dados")
                );
         }
     }
