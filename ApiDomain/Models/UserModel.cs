@@ -14,12 +14,12 @@ namespace ApiDomain.Models
             set { _id = value; }
         }
 
-        private string _name;
+        private string _nome;
 
-        public string Name
+        public string Nome
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return _nome; }
+            set { _nome = value; }
         }
 
         private string _email;

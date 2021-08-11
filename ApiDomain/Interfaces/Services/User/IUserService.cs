@@ -14,8 +14,8 @@ namespace ApiDomain.Interfaces.Services.User
         //Uma lista de usuário, não é um método e sim uma declaração
         Task<IEnumerable<UserDto>> GetAll();
 
-        Task<UserDtoCreateResult> Post(UserDto user);
-        Task<UserDtoUpdateResult> Put(UserDto user);
+        Task<UserDtoCreateResult> Post(UserDtoCreate user);
+        Task<UserDtoUpdateResult> Put(UserDtoUpdate user);
         Task<bool> Delete(Guid id);
 
     }

@@ -23,6 +23,18 @@ namespace ApiData.Context
 
             //Quando criar um novo objeto UserMap,configurando ele da forma escolhida.
             modelBuilder.Entity<UserEntity>(new UserMap().Configure);
+
+            modelBuilder.Entity<UserEntity>().HasData(
+                new UserEntity
+                {
+                    Id = Guid.NewGuid(),
+                    Nome = "Administrador",
+                    Email="Dexter@gmail.com",
+                    CreateAt = DateTime.Now,
+                    UpdateAt = DateTime.Now,
+                }
+                );
+            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ApiDomain.Entities;
+﻿using ApiDomain.Dtos.User;
+using ApiDomain.Entities;
 using ApiDomain.Interfaces.Services.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -66,7 +67,7 @@ namespace ApiApplication.Controllers
 
         [Authorize("Bearer")]
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] UserEntity user)
+        public async Task<ActionResult> Post([FromBody] UserDtoCreate user)
         {
             if (!ModelState.IsValid)
             {
@@ -95,7 +96,7 @@ namespace ApiApplication.Controllers
 
         [Authorize("Bearer")]
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] UserEntity user)
+        public async Task<ActionResult> Put([FromBody] UserDtoUpdate user)
         {
             if (!ModelState.IsValid)
             {
@@ -123,8 +124,8 @@ namespace ApiApplication.Controllers
         }
 
         [Authorize("Bearer")]
-        [HttpDelete ("{id}")]
-        public  async Task<ActionResult> Delete(Guid id)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
         {
             if (!ModelState.IsValid)
             {

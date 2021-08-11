@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ApiCrossCutting.Mappings
 {
-    class ModelToEntityProfile : Profile
+    public class ModelToEntityProfile : Profile
     {
         public ModelToEntityProfile()
         {
