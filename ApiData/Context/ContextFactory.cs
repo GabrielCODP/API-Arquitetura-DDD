@@ -13,7 +13,7 @@ namespace ApiData.Context
         {
             //Usado para crias as migrações
 
-            var connectioString = "server=localhost;userid=root;port=3306;password=78#P9865@;database=CursoApi";
+            var connectioString = "DadosBD";
             var optionsBuilder = new DbContextOptionsBuilder<MyContext>();
             optionsBuilder.UseMySql(connectioString);
             return new MyContext(optionsBuilder.Options);
