@@ -20,7 +20,7 @@ namespace ApiCrossCutting.DependencyInjection
             serviceCollection.AddScoped<IUserRepository, UserImplementation>();
 
             serviceCollection.AddDbContext<MyContext>(
-               options => options.UseMySql("dadosDoBD")
+               options => options.UseMySql("DadosDoBD")
                );
         }
     }

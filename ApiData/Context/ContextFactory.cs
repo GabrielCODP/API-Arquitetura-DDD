@@ -13,7 +13,7 @@ namespace ApiData.Context
         {
             //Usado para crias as migrações
 
-            var connectioString = "DadosBD";
+            var connectioString = "Colocar dados do BD";
             var optionsBuilder = new DbContextOptionsBuilder<MyContext>();
             optionsBuilder.UseMySql(connectioString);
             return new MyContext(optionsBuilder.Options);
