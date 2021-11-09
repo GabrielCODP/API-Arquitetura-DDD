@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ApiData.Mapping;
+using ApiData.Seeds;
 
 namespace ApiData.Context
 {
@@ -24,6 +25,10 @@ namespace ApiData.Context
             //Quando criar um novo objeto UserMap,configurando ele da forma escolhida.
             modelBuilder.Entity<UserEntity>(new UserMap().Configure);
 
+            modelBuilder.Entity<UfEntity>(new UfMap().Configure);
+            modelBuilder.Entity<MunicipioEntity>(new MunicipioMap().Configure);
+            modelBuilder.Entity<CepEntity>(new CepMap().Configure);
+
             modelBuilder.Entity<UserEntity>().HasData(
                 new UserEntity
                 {
@@ -34,7 +39,8 @@ namespace ApiData.Context
                     UpdateAt = DateTime.Now,
                 }
                 );
-            
+
+            UfSeeds.Ufs(modelBuilder);
         }
     }
 }

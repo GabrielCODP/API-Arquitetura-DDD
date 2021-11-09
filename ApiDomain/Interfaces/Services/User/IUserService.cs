@@ -17,6 +17,6 @@ namespace ApiDomain.Interfaces.Services.User
         Task<UserDtoCreateResult> Post(UserDtoCreate user);
         Task<UserDtoUpdateResult> Put(UserDtoUpdate user);
         Task<bool> Delete(Guid id);
-
+       
     }
 }

@@ -16,7 +16,6 @@ namespace ApiServiceTest.Login
 
 
         [Fact(DisplayName="É Possivel executar o Método FindByLogin")]
-
         public async Task E_Possivel_Executar_Metodo_FindByLogin()
         {
             var email = Faker.Internet.Email();
@@ -42,6 +41,7 @@ namespace ApiServiceTest.Login
             _service = _serviceMock.Object;
 
             var result = await _service.FindByLogin(loginDto);
+            Assert.NotNull(result);
 
         }
 

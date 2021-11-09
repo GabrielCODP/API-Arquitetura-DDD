@@ -17,6 +17,122 @@ namespace ApiData.Migrations
                 .HasAnnotation("ProductVersion", "3.1.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("ApiDomain.Entities.CepEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Cep")
+                        .IsRequired()
+                        .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
+                        .HasMaxLength(10);
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Logradouro")
+                        .IsRequired()
+                        .HasColumnType("varchar(60) CHARACTER SET utf8mb4")
+                        .HasMaxLength(60);
+
+                    b.Property<Guid>("MunicipioId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Numero")
+                        .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
+                        .HasMaxLength(10);
+
+                    b.Property<DateTime?>("UpdateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Cep");
+
+                    b.HasIndex("MunicipioId");
+
+                    b.ToTable("Cep");
+                });
+
+            modelBuilder.Entity("ApiDomain.Entities.MunicipioEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("CodIBGE")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(60) CHARACTER SET utf8mb4")
+                        .HasMaxLength(60);
+
+                    b.Property<Guid>("UfId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CodIBGE");
+
+                    b.HasIndex("UfId");
+
+                    b.ToTable("Municipio");
+                });
+
+            modelBuilder.Entity("ApiDomain.Entities.UfEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("CreateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("varchar(45) CHARACTER SET utf8mb4")
+                        .HasMaxLength(45);
+
+                    b.Property<string>("Sigla")
+                        .IsRequired()
+                        .HasColumnType("varchar(2) CHARACTER SET utf8mb4")
+                        .HasMaxLength(2);
+
+                    b.Property<DateTime?>("UpdateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Sigla")
+                        .IsUnique();
+
+                    b.ToTable("Uf");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("22ffbd18-cdb9-45cc-97b0-51e97700bf71"),
+                            CreateAt = new DateTime(2021, 10, 25, 17, 48, 35, 163, DateTimeKind.Utc).AddTicks(7890),
+                            Nome = "Acre",
+                            Sigla = "AC"
+                        },
+                        new
+                        {
+                            Id = new Guid("7cc33300-586e-4be8-9a4d-bd9f01ee9ad8"),
+                            CreateAt = new DateTime(2021, 10, 25, 17, 48, 35, 163, DateTimeKind.Utc).AddTicks(7927),
+                            Nome = "Alagoas",
+                            Sigla = "AL"
+                        });
+                });
+
             modelBuilder.Entity("ApiDomain.Entities.UserEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -44,6 +160,34 @@ namespace ApiData.Migrations
                         .IsUnique();
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("0e6a0b0e-ac32-49f9-acfd-056ef21b99f2"),
+                            CreateAt = new DateTime(2021, 10, 25, 14, 48, 35, 162, DateTimeKind.Local).AddTicks(1725),
+                            Email = "Dexter@gmail.com",
+                            Nome = "Administrador",
+                            UpdateAt = new DateTime(2021, 10, 25, 14, 48, 35, 162, DateTimeKind.Local).AddTicks(8504)
+                        });
+                });
+
+            modelBuilder.Entity("ApiDomain.Entities.CepEntity", b =>
+                {
+                    b.HasOne("ApiDomain.Entities.MunicipioEntity", "Municipio")
+                        .WithMany("Ceps")
+                        .HasForeignKey("MunicipioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ApiDomain.Entities.MunicipioEntity", b =>
+                {
+                    b.HasOne("ApiDomain.Entities.UfEntity", "Uf")
+                        .WithMany("Municipios")
+                        .HasForeignKey("UfId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

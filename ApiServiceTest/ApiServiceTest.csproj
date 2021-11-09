@@ -29,4 +29,8 @@
     <ProjectReference Include="..\ApiService\ApiService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Uf\" />
+  </ItemGroup>
+
 </Project>

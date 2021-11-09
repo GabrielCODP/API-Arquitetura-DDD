@@ -1,4 +1,7 @@
-﻿using ApiDomain.Dtos.User;
+﻿using ApiDomain.Dtos.Cep;
+using ApiDomain.Dtos.Municipio;
+using ApiDomain.Dtos.Uf;
+using ApiDomain.Dtos.User;
 using ApiDomain.Entities;
 using AutoMapper;
 using System;
@@ -16,6 +19,24 @@ namespace ApiCrossCutting.Mappings
             CreateMap<UserDtoCreateResult, UserEntity>().ReverseMap();
 
             CreateMap<UserDtoUpdateResult, UserEntity>().ReverseMap();
+
+            CreateMap<UfDto, UfEntity>().ReverseMap();
+
+            CreateMap<MunicipioDto, MunicipioEntity>().ReverseMap();
+
+            CreateMap<MunicipioDtoCompleto, MunicipioEntity>().ReverseMap();
+            //verificar erro
+            CreateMap<MunicipioDtoCreateResult, MunicipioEntity>().ReverseMap();
+
+            CreateMap<MunicipioDtoUpdateResult, MunicipioEntity>().ReverseMap();
+
+
+            CreateMap<CepDto, CepEntity>().ReverseMap();
+
+            CreateMap<CepDtoCreateResult, CepEntity>().ReverseMap();
+
+            CreateMap<CepDtoUpdateResult, CepEntity>().ReverseMap();
+
         }
     }
 }

@@ -64,7 +64,7 @@ namespace ApiApplication.Controllers
             }
 
         }
-
+       
         [Authorize("Bearer")]
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] UserDtoCreate user)
